@@ -48,15 +48,15 @@ export default function Sidebar() {
   };
 
   return (
-    <aside className="w-1/4 p-6 space-y-6">
+    <aside className="w-full lg:w-1/4 p-4 lg:p-6 space-y-4 lg:space-y-6">
       {/* Dark Blue Filter Card */}
-      <div className="bg-[#0057B8] rounded-xl p-6 text-white">
-        <h2 className="text-2xl font-bold mb-6">Filters</h2>
+      <div className="bg-[#0057B8] rounded-xl p-4 lg:p-6 text-white">
+        <h2 className="text-xl lg:text-2xl font-bold mb-4 lg:mb-6">Filters</h2>
         
         {/* Category */}
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-4">Category</h3>
-          <div className="space-y-3">
+        <div className="mb-4 lg:mb-6">
+          <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4">Category</h3>
+          <div className="space-y-2 lg:space-y-3">
             {categories.map((category) => (
               <label key={category} className="flex items-center cursor-pointer">
                 <input
@@ -66,7 +66,7 @@ export default function Sidebar() {
                   onChange={() => handleCategoryChange(category)}
                   className="w-4 h-4 text-white border-white/50 focus:ring-white"
                 />
-                <span className="ml-3">{category}</span>
+                <span className="ml-3 text-sm lg:text-base">{category}</span>
               </label>
             ))}
           </div>
@@ -74,8 +74,8 @@ export default function Sidebar() {
 
         {/* Price */}
         <div>
-          <h3 className="text-lg font-semibold mb-4">Price</h3>
-          <div className="space-y-4">
+          <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4">Price</h3>
+          <div className="space-y-3 lg:space-y-4">
             <input
               type="range"
               min="0"
@@ -85,7 +85,7 @@ export default function Sidebar() {
               onChange={(e) => handlePriceChange(e.target.value)}
               className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer"
             />
-            <div className="flex justify-between text-sm">
+            <div className="flex justify-between text-xs lg:text-sm">
               <span>0</span>
               <span>1000</span>
             </div>
@@ -94,11 +94,11 @@ export default function Sidebar() {
       </div>
 
       {/* White Filter Card */}
-      <div className="bg-white rounded-xl p-6 shadow-sm">
+      <div className="bg-white rounded-xl p-4 lg:p-6 shadow-sm">
         {/* Category */}
-        <div className="mb-6">
-          <h3 className="text-lg font-semibold mb-4 text-gray-900">Category</h3>
-          <div className="space-y-3">
+        <div className="mb-4 lg:mb-6">
+          <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4 text-gray-900">Category</h3>
+          <div className="space-y-2 lg:space-y-3">
             {categories.map((category) => (
               <label key={category} className="flex items-center cursor-pointer">
                 <input
@@ -108,7 +108,7 @@ export default function Sidebar() {
                   onChange={() => handleCategoryChange(category)}
                   className="w-4 h-4 text-[#0057B8] border-gray-300 focus:ring-[#0057B8]"
                 />
-                <span className="ml-3 text-gray-700">{category}</span>
+                <span className="ml-3 text-sm lg:text-base text-gray-700">{category}</span>
               </label>
             ))}
           </div>
@@ -116,11 +116,11 @@ export default function Sidebar() {
 
         {/* Price Dropdown */}
         <div>
-          <h3 className="text-lg font-semibold mb-4 text-gray-900">Price</h3>
+          <h3 className="text-base lg:text-lg font-semibold mb-3 lg:mb-4 text-gray-900">Price</h3>
           <select
             value={priceRange}
             onChange={(e) => handlePriceChange(e.target.value)}
-            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0057B8]"
+            className="w-full p-2 lg:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0057B8] text-sm lg:text-base"
           >
             <option value="1000">5000</option>
             <option value="500">500</option>

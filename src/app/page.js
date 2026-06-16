@@ -46,22 +46,22 @@ export default function Home() {
 
   return (
     <div className="flex flex-col min-h-screen bg-[#F3F4F6]">
-      <div className="flex flex-1">
+      <div className="flex flex-1 flex-col lg:flex-row">
         <Sidebar />
-        <main className="w-3/4 p-6">
-          <h1 className="text-[36px] font-bold text-gray-900 mb-6">Product Listing</h1>
+        <main className="w-full lg:w-3/4 p-4 lg:p-6">
+          <h1 className="text-[28px] lg:text-[36px] font-bold text-gray-900 mb-4 lg:mb-6">Product Listing</h1>
           
           {filteredProducts.length === 0 ? (
             <div className="flex items-center justify-center h-96">
               <p className="text-gray-500 text-lg">No products found matching your criteria.</p>
             </div>
           ) : (
-            <div className="grid grid-cols-3 gap-6">
+            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4  gap-2 lg:gap-3">
               {regularProducts.map((product) => (
                 <ProductCard key={product.id} product={product} />
               ))}
               {featuredProduct && (
-                <div className="col-span-3">
+                <div className="col-span-1 sm:col-span-2 lg:col-span-3">
                   <ProductCard key={featuredProduct.id} product={featuredProduct} isFeatured={true} />
                 </div>
               )}

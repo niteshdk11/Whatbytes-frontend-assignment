@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { useParams } from 'next/navigation';
 import Image from 'next/image';
-import products from '../../data/products.json';
+import products from '../../../data/products.json';
 import { Star, ShoppingCart, Minus, Plus } from 'lucide-react';
-import { useCart } from '../../context/CartContext';
+import { useCart } from '../../../context/CartContext';
 
 export default function ProductDetail() {
   const params = useParams();
