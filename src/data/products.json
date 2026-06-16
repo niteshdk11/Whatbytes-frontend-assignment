@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "title": "Wireless Bluetooth Headphones",
+    "price": 299.99,
+    "category": "Electronics",
+    "brand": "Sony",
+    "image": "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop",
+    "rating": 4.5,
+    "description": "Premium wireless headphones with active noise cancellation, 30-hour battery life, and crystal-clear sound quality."
+  },
+  {
+    "id": 2,
+    "title": "Smart Watch Series 5",
+    "price": 449.99,
+    "category": "Electronics",
+    "brand": "Apple",
+    "image": "https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=500&fit=crop",
+    "rating": 4.8,
+    "description": "Advanced smartwatch with health monitoring, GPS, and seamless connectivity with your devices."
+  },
+  {
+    "id": 3,
+    "title": "Laptop Pro 15",
+    "price": 1299.99,
+    "category": "Electronics",
+    "brand": "Dell",
+    "image": "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=500&h=500&fit=crop",
+    "rating": 4.7,
+    "description": "Powerful laptop with 15-inch display, 16GB RAM, and high-performance processor for professionals."
+  },
+  {
+    "id": 4,
+    "title": "Designer Leather Jacket",
+    "price": 599.99,
+    "category": "Fashion",
+    "brand": "Gucci",
+    "image": "https://images.unsplash.com/photo-1551028719-00167b16eac5?w=500&h=500&fit=crop",
+    "rating": 4.6,
+    "description": "Premium leather jacket with modern design, perfect for any occasion."
+  },
+  {
+    "id": 5,
+    "title": "Running Shoes Ultra",
+    "price": 179.99,
+    "category": "Fashion",
+    "brand": "Nike",
+    "image": "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&h=500&fit=crop",
+    "rating": 4.9,
+    "description": "Lightweight running shoes with advanced cushioning technology for maximum comfort."
+  },
+  {
+    "id": 6,
+    "title": "Classic Denim Jeans",
+    "price": 89.99,
+    "category": "Fashion",
+    "brand": "Levi's",
+    "image": "https://images.unsplash.com/photo-1542272604-787c3835535d?w=500&h=500&fit=crop",
+    "rating": 4.4,
+    "description": "Timeless denim jeans with perfect fit and premium quality fabric."
+  },
+  {
+    "id": 7,
+    "title": "Modern Coffee Table",
+    "price": 349.99,
+    "category": "Home & Garden",
+    "brand": "IKEA",
+    "image": "https://images.unsplash.com/photo-1533090481720-856c6e3c1fdc?w=500&h=500&fit=crop",
+    "rating": 4.3,
+    "description": "Sleek coffee table with minimalist design, perfect for modern living rooms."
+  },
+  {
+    "id": 8,
+    "title": "Indoor Plant Set",
+    "price": 79.99,
+    "category": "Home & Garden",
+    "brand": "Planters",
+    "image": "https://images.unsplash.com/photo-1459411552884-841db9b3cc2a?w=500&h=500&fit=crop",
+    "rating": 4.5,
+    "description": "Set of 3 beautiful indoor plants with decorative pots to brighten any space."
+  },
+  {
+    "id": 9,
+    "title": "Yoga Mat Premium",
+    "price": 49.99,
+    "category": "Sports",
+    "brand": "Lululemon",
+    "image": "https://images.unsplash.com/photo-1601925260368-ae2f83cf8b7f?w=500&h=500&fit=crop",
+    "rating": 4.7,
+    "description": "Non-slip yoga mat with extra cushioning for comfortable practice sessions."
+  },
+  {
+    "id": 10,
+    "title": "Basketball Official",
+    "price": 69.99,
+    "category": "Sports",
+    "brand": "Spalding",
+    "image": "https://images.unsplash.com/photo-1519861531473-9200262188bf?w=500&h=500&fit=crop",
+    "rating": 4.6,
+    "description": "Official size basketball with superior grip and durability."
+  },
+  {
+    "id": 11,
+    "title": "Wireless Earbuds Pro",
+    "price": 199.99,
+    "category": "Electronics",
+    "brand": "Samsung",
+    "image": "https://images.unsplash.com/photo-1590658268037-6bf12165a8df?w=500&h=500&fit=crop",
+    "rating": 4.4,
+    "description": "Compact wireless earbuds with premium sound and long battery life."
+  },
+  {
+    "id": 12,
+    "title": "Sunglasses Aviator",
+    "price": 159.99,
+    "category": "Fashion",
+    "brand": "Ray-Ban",
+    "image": "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=500&h=500&fit=crop",
+    "rating": 4.8,
+    "description": "Classic aviator sunglasses with UV protection and timeless style."
+  }
+]
