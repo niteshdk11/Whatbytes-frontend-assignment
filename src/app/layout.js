@@ -3,6 +3,7 @@ import "./globals.css";
 import { CartProvider } from "../context/CartContext";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -27,7 +28,9 @@ export default function RootLayout({ children }) {
     >
       <body className="min-h-full flex flex-col">
         <CartProvider>
-          <Header />
+          <Suspense fallback={<div className="h-[60px] lg:h-[75px] bg-[#0057B8]" />}>
+            <Header />
+          </Suspense>
           <div className="flex flex-1 flex-col">
             {children}
           </div>
