@@ -101,17 +101,17 @@ export default function ProductDetail() {
               <div className="flex items-center space-x-4">
                 <button
                   onClick={() => handleQuantityChange(-1)}
-                  className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors bg-white"
                   disabled={quantity <= 1}
                 >
-                  <Minus className="h-5 w-5" />
+                  <Minus className="h-5 w-5 text-gray-700" />
                 </button>
-                <span className="text-xl font-semibold w-12 text-center">{quantity}</span>
+                <span className="text-2xl font-bold w-16 text-center text-gray-900">{quantity}</span>
                 <button
                   onClick={() => handleQuantityChange(1)}
-                  className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors"
+                  className="p-2 border border-gray-300 rounded-lg hover:bg-gray-100 transition-colors bg-white"
                 >
-                  <Plus className="h-5 w-5" />
+                  <Plus className="h-5 w-5 text-gray-700" />
                 </button>
               </div>
             </div>
