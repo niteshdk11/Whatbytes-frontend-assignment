@@ -1,83 +1,112 @@
 'use client';
 
 import { useRouter, useSearchParams } from 'next/navigation';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
-const categories = ['Electronics', 'Fashion', 'Home & Garden', 'Sports'];
-const brands = ['Sony', 'Apple', 'Dell', 'Gucci', 'Nike', "Levi's", 'IKEA', 'Planters', 'Lululemon', 'Spalding', 'Samsung', 'Ray-Ban'];
+const categories = ['All', 'Electronics', 'Clothing', 'Home'];
 
 export default function Sidebar() {
   const router = useRouter();
   const searchParams = useSearchParams();
-  const [selectedCategories, setSelectedCategories] = useState(searchParams.get('category')?.split(',') || []);
-  const [selectedBrands, setSelectedBrands] = useState(searchParams.get('brand')?.split(',') || []);
+  const isInitialized = useRef(false);
+  const [selectedCategory, setSelectedCategory] = useState(searchParams.get('category') || 'All');
   const [priceRange, setPriceRange] = useState(() => {
     const priceParam = searchParams.get('price');
     if (priceParam) {
-      const [min, max] = priceParam.split('-').map(Number);
-      return { min, max };
+      return Number(priceParam);
     }
-    return { min: 0, max: 1500 };
+    return 1000;
   });
 
   useEffect(() => {
-    const params = new URLSearchParams(searchParams);
-    
-    if (selectedCategories.length > 0) {
-      params.set('category', selectedCategories.join(','));
-    } else {
-      params.delete('category');
-    }
-    
-    if (selectedBrands.length > 0) {
-      params.set('brand', selectedBrands.join(','));
-    } else {
-      params.delete('brand');
-    }
-    
-    if (priceRange.min > 0 || priceRange.max < 1500) {
-      params.set('price', `${priceRange.min}-${priceRange.max}`);
-    } else {
-      params.delete('price');
-    }
-    
-    router.push(`/?${params.toString()}`);
-  }, [selectedCategories, selectedBrands, priceRange, router, searchParams]);
+    isInitialized.current = true;
+  }, []);
 
-  const handleCategoryToggle = (category) => {
-    setSelectedCategories((prev) =>
-      prev.includes(category)
-        ? prev.filter((c) => c !== category)
-        : [...prev, category]
-    );
+  useEffect(() => {
+    if (!isInitialized.current) return;
+
+    const params = new URLSearchParams();
+    
+    if (selectedCategory !== 'All') {
+      params.set('category', selectedCategory);
+    }
+    
+    if (priceRange < 1000) {
+      params.set('price', priceRange.toString());
+    }
+    
+    const queryString = params.toString();
+    router.push(queryString ? `/?${queryString}` : '/', { scroll: false });
+  }, [selectedCategory, priceRange, router]);
+
+  const handleCategoryChange = (category) => {
+    setSelectedCategory(category);
   };
 
-  const handleBrandToggle = (brand) => {
-    setSelectedBrands((prev) =>
-      prev.includes(brand)
-        ? prev.filter((b) => b !== brand)
-        : [...prev, brand]
-    );
-  };
-
-  const handlePriceChange = (field, value) => {
-    setPriceRange((prev) => ({ ...prev, [field]: Number(value) }));
+  const handlePriceChange = (value) => {
+    setPriceRange(Number(value));
   };
 
   return (
-    <aside className="w-full md:w-64 bg-white border-r border-gray-200 p-6">
-      <div className="space-y-8">
-        {/* Category Filter */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Category</h3>
-          <div className="space-y-2">
+    <aside className="w-1/4 p-6 space-y-6">
+      {/* Dark Blue Filter Card */}
+      <div className="bg-[#0057B8] rounded-xl p-6 text-white">
+        <h2 className="text-2xl font-bold mb-6">Filters</h2>
+        
+        {/* Category */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-4">Category</h3>
+          <div className="space-y-3">
             {categories.map((category) => (
               <label key={category} className="flex items-center cursor-pointer">
                 <input
-                  type="checkbox"
-                  checked={selectedCategories.includes(category)}
-                  onChange={() => handleCategoryToggle(category)}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
+                  type="radio"
+                  name="category"
+                  checked={selectedCategory === category}
+                  onChange={() => handleCategoryChange(category)}
+                  className="w-4 h-4 text-white border-white/50 focus:ring-white"
+                />
+                <span className="ml-3">{category}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        {/* Price */}
+        <div>
+          <h3 className="text-lg font-semibold mb-4">Price</h3>
+          <div className="space-y-4">
+            <input
+              type="range"
+              min="0"
+              max="1000"
+              step="50"
+              value={priceRange}
+              onChange={(e) => handlePriceChange(e.target.value)}
+              className="w-full h-2 bg-white/30 rounded-lg appearance-none cursor-pointer"
+            />
+            <div className="flex justify-between text-sm">
+              <span>0</span>
+              <span>1000</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* White Filter Card */}
+      <div className="bg-white rounded-xl p-6 shadow-sm">
+        {/* Category */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold mb-4 text-gray-900">Category</h3>
+          <div className="space-y-3">
+            {categories.map((category) => (
+              <label key={category} className="flex items-center cursor-pointer">
+                <input
+                  type="radio"
+                  name="category2"
+                  checked={selectedCategory === category}
+                  onChange={() => handleCategoryChange(category)}
+                  className="w-4 h-4 text-[#0057B8] border-gray-300 focus:ring-[#0057B8]"
                 />
                 <span className="ml-3 text-gray-700">{category}</span>
               </label>
@@ -85,53 +114,19 @@ export default function Sidebar() {
           </div>
         </div>
 
-        {/* Price Range Filter */}
+        {/* Price Dropdown */}
         <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Price Range</h3>
-          <div className="space-y-4">
-            <div>
-              <label className="block text-sm text-gray-600 mb-1">Min: ${priceRange.min}</label>
-              <input
-                type="range"
-                min="0"
-                max="1500"
-                step="50"
-                value={priceRange.min}
-                onChange={(e) => handlePriceChange('min', e.target.value)}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-              />
-            </div>
-            <div>
-              <label className="block text-sm text-gray-600 mb-1">Max: ${priceRange.max}</label>
-              <input
-                type="range"
-                min="0"
-                max="1500"
-                step="50"
-                value={priceRange.max}
-                onChange={(e) => handlePriceChange('max', e.target.value)}
-                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-              />
-            </div>
-          </div>
-        </div>
-
-        {/* Brand Filter */}
-        <div>
-          <h3 className="text-lg font-semibold text-gray-900 mb-4">Brand</h3>
-          <div className="space-y-2 max-h-48 overflow-y-auto">
-            {brands.map((brand) => (
-              <label key={brand} className="flex items-center cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={selectedBrands.includes(brand)}
-                  onChange={() => handleBrandToggle(brand)}
-                  className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500"
-                />
-                <span className="ml-3 text-gray-700">{brand}</span>
-              </label>
-            ))}
-          </div>
+          <h3 className="text-lg font-semibold mb-4 text-gray-900">Price</h3>
+          <select
+            value={priceRange}
+            onChange={(e) => handlePriceChange(e.target.value)}
+            className="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0057B8]"
+          >
+            <option value="1000">5000</option>
+            <option value="500">500</option>
+            <option value="250">250</option>
+            <option value="100">100</option>
+          </select>
         </div>
       </div>
     </aside>
