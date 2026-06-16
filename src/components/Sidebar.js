@@ -120,7 +120,7 @@ export default function Sidebar() {
           <select
             value={priceRange}
             onChange={(e) => handlePriceChange(e.target.value)}
-            className="w-full p-2 lg:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0057B8] text-sm lg:text-base"
+            className="w-full p-2 lg:p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#0057B8] text-sm lg:text-base text-black"
           >
             <option value="1000">5000</option>
             <option value="500">500</option>
